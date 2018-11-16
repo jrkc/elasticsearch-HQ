@@ -33,6 +33,8 @@ RUN mkdir -p /var/log/supervisor
 COPY ./deployment/supervisord.conf /etc/supervisor/supervisord.conf
 COPY ./deployment/gunicorn.conf /etc/supervisor/conf.d/gunicorn.conf
 
+# set openshift permissions
+RUN chgrp -R 0 /src && chmod -R g=u /src
 WORKDIR /src
 
 # Start processes
