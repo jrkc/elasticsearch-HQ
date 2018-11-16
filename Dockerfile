@@ -33,6 +33,8 @@ RUN mkdir -p /var/log/supervisor
 COPY ./deployment/supervisord.conf /etc/supervisor/supervisord.conf
 COPY ./deployment/gunicorn.conf /etc/supervisor/conf.d/gunicorn.conf
 
+WORKDIR /src
+
 # Start processes
 CMD ["supervisord", "-c", "/etc/supervisor/supervisord.conf"]
 
